@@ -16,6 +16,18 @@ public class ServicioTuristico {
         this.horas = horas;
     }
 
+    public String getNombre() {return nombre;}
+    public Double getHoras() {return horas;}
+    public void setNombre(String nombre) {this.nombre = nombre;}
+    public void setHoras(Double horas) {this.horas = horas;}
 
 
+
+
+
+    @Override
+    public String toString() {
+        return "nombre='" + nombre + '\'' +
+                ", horas=" + horas+", ";
+    }
 }
