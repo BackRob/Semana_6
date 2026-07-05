@@ -5,6 +5,11 @@ public class PaseoLacustre extends ServicioTuristico{
 
 
     //constructores
+
+    public PaseoLacustre(PaseoLacustre paseoLacustre) {
+        this(paseoLacustre.getNombre(),paseoLacustre.getHoras(),paseoLacustre.getTipoEmbarcacion());
+    }
+
     public PaseoLacustre() {
         super();
         this.tipoEmbarcacion = "SINTIPOEMBARCACION";
@@ -16,15 +21,28 @@ public class PaseoLacustre extends ServicioTuristico{
     }
 
 
+
+
     //sets y gets
     public String getTipoEmbarcacion() {return tipoEmbarcacion;}
     public void setTipoEmbarcacion(String tipoEmbarcacion) {this.tipoEmbarcacion = tipoEmbarcacion;}
 
+    //Poliformismo para mostrarIformacion
+    @Override
+    public void mostrarInformacion(){
+        System.out.println(this);
+    }
+
+    //Poliformismo para copiar
+    @Override
+    public PaseoLacustre copiar(){
+        return new PaseoLacustre(this);
+    }
 
     @Override
     public String toString() {
-        return "PaseoLacustre{" +super.toString()+
-                "tipoEmbarcacion='" + tipoEmbarcacion + '\'' +
+        return "Paseo Lacustre{" +super.toString()+
+                "Tipo de embarcacion='" + tipoEmbarcacion + '\'' +
                 '}';
     }
 }

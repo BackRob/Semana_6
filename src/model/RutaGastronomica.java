@@ -5,6 +5,10 @@ public class RutaGastronomica extends ServicioTuristico{
 
 
     //constructores
+    public RutaGastronomica(RutaGastronomica rutaGastronomica) {
+        this(rutaGastronomica.getNombre(), rutaGastronomica.getHoras(), rutaGastronomica.numeroDeParadas);
+    }
+
     public RutaGastronomica() {
         super();
         this.numeroDeParadas = 0;
@@ -16,10 +20,23 @@ public class RutaGastronomica extends ServicioTuristico{
     }
 
 
+
+
     //sets y gets
     public int getNumeroDeParadas() {return numeroDeParadas;}
     public void setNumeroDeParadas(int numeroDeParadas) {this.numeroDeParadas = numeroDeParadas;}
 
+    //Poliformismo
+    @Override
+    public void mostrarInformacion(){
+        System.out.println(this);
+    }
+
+    //poliformismo para copiar
+    @Override
+    public RutaGastronomica copiar(){
+        return new RutaGastronomica(this);
+    }
 
     //metodo toString
     @Override

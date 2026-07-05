@@ -1,162 +1,110 @@
 # Sistema de Gestión de Servicios Turísticos
 
-## Descripción
+Proyecto desarrollado en **Java** para demostrar los conceptos fundamentales de **Programación Orientada a Objetos (POO)**, aplicando herencia, polimorfismo, encapsulación y manejo de colecciones.
 
-Este proyecto corresponde a una aplicación desarrollada en **Java** utilizando **Programación Orientada a Objetos (POO)**.
+## Objetivos
 
-El sistema permite administrar distintos tipos de servicios turísticos, aplicando conceptos como herencia, polimorfismo y encapsulamiento.
+- Modelar distintos tipos de servicios turísticos mediante herencia.
+- Almacenar los servicios en una única colección utilizando polimorfismo.
+- Aplicar encapsulación devolviendo copias de la colección.
+- Demostrar el uso de métodos sobrescritos (`@Override`) para ejecutar comportamientos específicos de cada clase.
 
-Los servicios son almacenados temporalmente en memoria mediante listas (`ArrayList`) y posteriormente pueden visualizarse por consola.
-
----
-
-## Objetivo
-
-Desarrollar una aplicación que permita registrar y administrar diferentes servicios turísticos utilizando una jerarquía de clases y un gestor encargado de almacenar la información.
-
----
-
-## Estructura del Proyecto
+## Estructura del proyecto
 
 ```
 src
-│
 ├── data
 │   └── GestorServicios.java
 │
-├── iu
-│   └── Main.java
+├── model
+│   ├── ServicioTuristico.java
+│   ├── ExcursionCultural.java
+│   ├── PaseoLacustre.java
+│   └── RutaGastronomica.java
 │
-└── model
-    ├── ServicioTuristico.java
-    ├── ExcursionCultural.java
-    ├── PaseoLacustre.java
-    └── RutaGastronomica.java
+└── iu
+    └── Main.java
 ```
 
----
-
-## Clases del Proyecto
+## Clases
 
 ### ServicioTuristico
 
-Clase padre del sistema.
-
-Contiene los atributos comunes para todos los servicios turísticos, como:
-
-- Nombre
-- Duración en horas
-
-Esta clase es heredada por los distintos tipos de servicios.
-
----
+Clase padre que representa un servicio turístico genérico. Contiene los atributos y métodos comunes para todos los servicios.
 
 ### ExcursionCultural
 
-Representa una excursión a un lugar histórico.
-
-Atributo adicional:
-
-- Lugar histórico
-
----
+Clase hija que representa una excursión cultural.
 
 ### PaseoLacustre
 
-Representa un paseo realizado en una embarcación.
-
-Atributo adicional:
-
-- Tipo de embarcación
-
----
+Clase hija que representa un paseo lacustre.
 
 ### RutaGastronomica
 
-Representa una ruta enfocada en la gastronomía.
-
-Atributo adicional:
-
-- Número de paradas
-
----
+Clase hija que representa una ruta gastronómica.
 
 ### GestorServicios
 
-Es la clase encargada de administrar la información del sistema.
+Clase encargada de administrar los servicios turísticos registrados.
 
-Entre sus funciones se encuentran:
+Entre sus responsabilidades se encuentran:
 
-- Agregar excursiones culturales.
-- Agregar paseos lacustres.
-- Agregar rutas gastronómicas.
-- Mostrar todos los servicios registrados.
-- Limpiar las listas almacenadas en memoria.
+- Agregar servicios.
+- Mostrar los servicios almacenados.
+- Limpiar la colección.
+- Retornar una copia de la lista para proteger la encapsulación.
 
-Además incluye un método de prueba que crea objetos automáticamente para verificar el funcionamiento del programa. :contentReference[oaicite:0]{index=0}
+## Conceptos aplicados
 
----
-
-## Conceptos de Programación Aplicados
-
-- Programación Orientada a Objetos
+- Programación Orientada a Objetos (POO)
 - Herencia
 - Polimorfismo
-- Encapsulamiento
-- Constructores
-- Sobrescritura del método `toString()`
-- Uso de `ArrayList`
-- Organización por paquetes
+- Sobrescritura de métodos (`@Override`)
+- Clases abstractas
+- Constructores copia
+- Encapsulación
+- Colecciones (`ArrayList`)
+- Manejo de listas mediante referencias del tipo padre
 
----
+## Ejecución
 
-## Funcionamiento
+1. Clonar el repositorio.
 
-Al ejecutar el programa:
+```bash
+git clone <url-del-repositorio>
+```
 
-1. Se crea una instancia del gestor.
-2. Se registran distintos servicios turísticos.
-3. Cada servicio se almacena en su respectiva lista.
-4. Finalmente todos los servicios son mostrados por consola.
+2. Abrir el proyecto en IntelliJ IDEA.
 
----
+3. Ejecutar la clase:
+
+```
+src/iu/Main.java
+```
+
+## Ejemplo de funcionamiento
+
+El programa registra distintos servicios turísticos:
+
+- Excursión Cultural
+- Paseo Lacustre
+- Ruta Gastronómica
+
+Todos son almacenados en una única lista de tipo:
+
+```java
+List<ServicioTuristico>
+```
+
+Posteriormente son recorridos utilizando un ciclo `for-each`, invocando el método `mostrarInformacion()` mediante polimorfismo.
 
 ## Tecnologías utilizadas
 
 - Java
 - IntelliJ IDEA
-- JDK 17 (o superior)
-
----
+- Maven
 
 ## Autor
 
 **Brian Vallejos**
-
-Estudiante Analista Programador Computacional
-
----
-
-## Ejemplo de salida
-
-```
-Servicios Turísticos registrados:
-
-1.- ExcursionCultural{...}
-
-2.- ExcursionCultural{...}
-
-3.- PaseoLacustre{...}
-
-4.- PaseoLacustre{...}
-
-5.- RutaGastronomica{...}
-
-6.- RutaGastronomica{...}
-```
-
----
-
-## Estado del proyecto
-
-Proyecto académico desarrollado para la asignatura de Programación Orientada a Objetos.

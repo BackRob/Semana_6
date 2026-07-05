@@ -6,77 +6,63 @@ import model.RutaGastronomica;
 import model.ServicioTuristico;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class GestorServicios {
+
+    private List<ServicioTuristico> servicios;
+
+
     private final ArrayList<ServicioTuristico> eCList = new ArrayList<>();
     private final ArrayList<PaseoLacustre> pLList = new ArrayList<>();
     private final ArrayList<RutaGastronomica> rGList = new ArrayList<>();
 
-    public GestorServicios() {}
-
-    //metodos para agregar con y sin datos ExcursionCultural
-    public void agregarEC(){
-        eCList.add(new ExcursionCultural());
-    }
-    public void agregarEC(String nombre, Double horas,String lugarHistorico){
-        eCList.add(new ExcursionCultural(nombre,horas,lugarHistorico));
+    public GestorServicios() {
+        servicios = new ArrayList<>();
     }
 
-    //metodos para agregar con y sin datos PaseoLacustre
-    public void agregarPL(){
-        pLList.add(new PaseoLacustre());
+    //Metodo aque agrega a la lista
+    public void agregarST(ServicioTuristico sT){
+        servicios.add(sT);
     }
-    public void agregarPL(String nombre,Double horas,String tipoEmbarcacion){
-        pLList.add(new PaseoLacustre(nombre,horas,tipoEmbarcacion));
-    }
-
-    //metodos para agregar con y sin datos RutaGastronomica
-    public void agregarRG(){
-        rGList.add(new RutaGastronomica());
-    }
-    public void agregarRG(String nombre,Double horas,int numeroDeParadas){
-        rGList.add(new RutaGastronomica(nombre,horas,numeroDeParadas));
-    }
-
 
     //metodo para mostrar datos almacenados en memoria por consola
     public void mostrar(){
-        ArrayList<ServicioTuristico> todaLista = new ArrayList<>();
-        todaLista.addAll(eCList);
-        todaLista.addAll(pLList);
-        todaLista.addAll(rGList);
         int contador = 0;
 
-        for(ServicioTuristico stListAux : todaLista){
+        for(ServicioTuristico listAux : servicios){
             contador++;
-            System.out.println(contador+".-"+stListAux);
+            System.out.println(contador+".-"+listAux);
         }
     }
 
     //metodo de prueba, crea 2 objetos y muestra
 
-    public void pruebaSemana_6(){
+    public void pruebaSemana_7(){
 
-        System.out.println("Servicios Turisticos registrados: ");
-        agregarEC();
-        agregarEC("tour Museo Bellas Artes",3.0,"Museo Bellas Artes");
-
-        agregarPL();
-        agregarPL("Paseo la barra",4.0,"Lancha");
-
-        agregarRG();
-        agregarRG("Ruta Chilena",6.0,3);
-
+        System.out.println("Servicios Turisticos cargados: ");
+        agregarST(new ExcursionCultural("tour Museo Bellas Artes",3.0,"Museo Bellas Artes"));
+        agregarST(new PaseoLacustre("Paseo la barra",4.0,"Lancha"));
+        agregarST(new RutaGastronomica("Ruta Chilena",6.0,3));
+        agregarST(new PaseoLacustre("Pesca Valparaiso",2.0,"Bote"));
+        agregarST(new ExcursionCultural("Termas de Puyehue",5.0,"Volcan Puyehue"));
         mostrar();
     }
 
-    //metodo para limpiar listas
-    public void limpiarListas(){
-        eCList.clear();
-        pLList.clear();
-        rGList.clear();
+    //metodo para limpiar lista
+    public void limpiarLista(){
+        servicios.clear();
     }
 
 
+    //metodo que retorna copia exacta de la lista en memoria
+    public List<ServicioTuristico> obtenerLista() {
+        List<ServicioTuristico> listaCopia = new ArrayList<>();
+        for (ServicioTuristico aux:servicios){
+            listaCopia.add(aux.copiar());
+        }
+
+        return listaCopia;
+    }
 }
 
